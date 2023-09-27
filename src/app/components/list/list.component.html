@@ -1,0 +1,30 @@
+<div class="list">
+    <div class="list__menu menu">
+        <button class="btn-main" type="button" (click)="openUserForm()">Create User</button>
+    </div>
+    <table class="list__users users">
+        <tr>
+            <th>UserName</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Type</th>
+        </tr>
+        <tr *ngFor="let user of userList" (click)="openUserForm(user)">
+            <td>{{user.userName}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.userType}}</td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

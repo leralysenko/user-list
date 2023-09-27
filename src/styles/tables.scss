@@ -1,0 +1,38 @@
+@import "./colors.scss";
+table {
+    width: 100%;
+    border: 1px solid $light-grey;
+    border-collapse: collapse;
+    font-size: 12px;
+    tr {
+        th {
+            background-color: $white;
+            text-align: left;
+            color: $gray-text;
+            text-transform: uppercase;
+        }
+
+        td {
+            color: $dark-grey;
+            background-color: $light-grey;
+            cursor: pointer;
+        }
+
+        th, td {
+            padding: 7px 15px;
+            text-align: left;
+            border-bottom: 1px solid $white;
+          }
+          
+    }
+
+    tr:active {background-color: $grey}
+
+    tfoot {
+        height: 30px;
+        td {
+            background-color: $white;
+        }
+    }
+
+}

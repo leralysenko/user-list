@@ -1,0 +1,96 @@
+<div *ngIf="user" class="user">
+    <div class="user__top">
+        <h2 *ngIf="user.firstName">{{user.firstName}} {{user.lastName}}</h2>
+        <h2 *ngIf="!user.firstName">Create new user</h2>
+        <span class="btn-close" (click)="closeForm()">&times;</span>
+    </div>
+    <form class="user__form form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form__item">
+            <label for="user-name">Username</label>
+            <input type="text" id="user-name" formControlName="userName" required
+            [ngClass]="this.checkValidation('userName') ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('userName')" class="alert">
+                <div *ngIf="this.userForm.get('userName')?.errors?.['required']">
+                    userName is required.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" formControlName="firstName" required
+            [ngClass]="this.checkValidation('firstName') ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('firstName')" class="alert">
+                <div *ngIf="this.userForm.get('firstName')?.errors?.['required']">
+                    first name is required.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" formControlName="lastName" required
+            [ngClass]="this.checkValidation('lastName') ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('lastName')" class="alert">
+                <div *ngIf="this.userForm.get('lastName')?.errors?.['required']">
+                    last name is required.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" required
+            [ngClass]="this.checkValidation('email') ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('email')" class="alert">
+                <div *ngIf="this.userForm.get('email')?.errors?.['required']">
+                    email is required.
+                </div>
+                <div *ngIf="this.userForm.get('email')?.errors?.['email']">
+                    incorrect email.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="type">Type</label>
+            <select id="type" formControlName="userType" required
+            [ngClass]="this.checkValidation('userType') ? 'invalid' : ''">
+                <option [value]="userTypes.admin">{{userTypes.admin}}</option>
+                <option [value]="userTypes.driver">{{userTypes.driver}}</option>
+            </select>
+            <div *ngIf="this.checkValidation('userType')" class="alert">
+                <div *ngIf="this.userForm.get('userType')?.errors?.['required']">
+                    user type is required.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" required
+            [ngClass]="this.checkValidation('password') ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('password')" class="alert">
+                <div *ngIf="this.userForm.get('password')?.errors?.['required']">
+                    password is required.
+                </div>
+                <div *ngIf="this.userForm.get('password')?.errors?.['pattern']">
+                    password should contain at least one number and one letter.
+                </div>
+                <div *ngIf="this.userForm.get('password')?.errors?.['minLength']">
+                    password should contain at least 8 characters.
+                </div>
+            </div>
+        </div>
+        <div class="form__item">
+            <label for="repeated-password">Repeat password</label>
+            <input type="password" id="repeated-password" formControlName="repeatedPassword" required
+            [ngClass]="this.checkValidation('repeatedPassword') || !IsConfirmationPasswordValid ? 'invalid' : ''">
+            <div *ngIf="this.checkValidation('repeatedPassword') || !IsConfirmationPasswordValid" class="alert">
+                <div *ngIf="!IsConfirmationPasswordValid">
+                    confirmation password should be equal password.
+                </div>
+            </div>
+        </div>
+        <div class="form__bottom">
+            <button  *ngIf="user.firstName" class="btn-cancel" type="button" (click)="deleteUser()">Delete</button>
+            <button class="btn-main" type="submit">{{user.firstName ? 'Save' : 'Create'}}</button>
+        </div>
+    </form>
+
+</div>

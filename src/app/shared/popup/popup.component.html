@@ -1,0 +1,4 @@
+<div *ngIf="IsShowMessage" class="message" 
+[ngStyle]="{'background-color': color}" (click)="hideMessage()">
+    <div class="text">{{message}}</div>
+</div>

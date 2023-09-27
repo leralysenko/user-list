@@ -1,0 +1,23 @@
+@import "./colors.scss";
+button {
+    border-radius: 5px;
+    padding: 7px 15px;
+    border: 2px solid $white;
+}
+
+.btn-main {
+    background-color: $blue;
+    color: $white;
+    border-color: $blue;
+}
+
+.btn-cancel {
+    background-color: $dark-pink;
+    color: $white;
+    border-color: $dark-pink;
+}
+
+.btn-close {
+    font-size: 25px;
+    cursor:pointer;
+}

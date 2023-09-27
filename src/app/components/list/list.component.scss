@@ -1,0 +1,9 @@
+.list {
+    padding: 15px;
+    width: 700px;
+    &__menu {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

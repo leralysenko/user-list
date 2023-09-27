@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./colors.scss";
+@import "./tables.scss";
+@import "./buttons.scss";
+
+
+  body {
+    background-color: $background;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
